@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Document</title>
 
     <link rel="stylesheet" href="prism/prism.css">
@@ -17,11 +17,11 @@
             font-size: large;
             line-height: 1.5;
         }
-        
+
         h1 {
-           text-align: center; 
+            text-align: center;
         }
-       
+
 
         .content {
             padding: 0 20% 0;
@@ -47,28 +47,30 @@
             <h1 class="center">Giao tiếp giữa client và server </h1>
 
             <div>
-                
+
                 <h2>Bên ESP32 client</h2>
                 <p>
                     - Client sẽ đo và gửi một HTTP Request (nói đơn giản hơn là một đoạn text), trông như sau: <br>
-                    
-                    <div class="code" >
-                        POST / HTTP/1.1 <br> <br>
-                        esp-id=0&vol=5&time=123456
-                    </div> <br>
 
-                    - Raw text: <code>POST / HTTP/1.1\n\nesp-id=0&vol=5&time=123456</code>
-                    <br> - Nếu mọi người thử hàm <code> time_t now = time(0);</code> của c++ rồi <code> std::cout&lt;&lt;now; </code>
-                    thì sẽ thấy <code>now</code> là một con số duy nhất lưu một thời gian, như vậy mình sẽ chỉ cần lưu
-                    con số này, khi nào cần hiển thị thì có thể đưa nó về dạng ngày tháng sau.
-                    
-                    <br>- Nếu gửi và bên server lưu thành công, bên server sẽ trả về một response nhỏ để thông báo:
-                    <br><code>HTTP/1.1 200 OK</code>
-                    <br> - Client tùy chọn làm gì với response này cũng được, đơn giản nhất là làm 1 đèn nháy xanh thông báo đã gửi và lưu dữ liệu thành công.
-                    <br> 
-                </p>  
-                
-                
+                <div class="code">
+                    POST / HTTP/1.1 <br> <br>
+                    esp-id=0&vol=5&time=123456
+                </div> <br>
+
+                - Raw text: <code>POST / HTTP/1.1\n\nesp-id=0&vol=5&time=123456</code>
+                <br> - Nếu mọi người thử hàm <code> time_t now = time(0);</code> của c++ rồi
+                <code> std::cout&lt;&lt;now; </code>
+                thì sẽ thấy <code>now</code> là một con số duy nhất lưu một thời gian, như vậy mình sẽ chỉ cần lưu
+                con số này, khi nào cần hiển thị thì có thể đưa nó về dạng ngày tháng sau.
+
+                <br>- Nếu gửi và bên server lưu thành công, bên server sẽ trả về một response nhỏ để thông báo:
+                <br><code>HTTP/1.1 200 OK</code>
+                <br> - Client tùy chọn làm gì với response này cũng được, đơn giản nhất là làm 1 đèn nháy xanh thông báo
+                đã gửi và lưu dữ liệu thành công.
+                <br>
+                </p>
+
+
 
             </div>
 
@@ -77,16 +79,16 @@
                 <h3>Nhận dữ liệu từ ESP32 client</h3>
                 <p>
                     - Ở phần controller, lấy giá trị các tham số của request
-                    <pre>
-                         <code class="language-css" >
-                        std::string espId = response.value("esp-id"), <br>
-                                    vol = response.value("vol"), <br>
-                                    time = response.value("time"); <br>
-                        // handle data and save to database <br>
+                <pre>
+                <code class="language-css" >
+std::string espId = response.value("esp-id"), <br>
+    vol = response.value("vol"), <br>
+    time = response.value("time"); <br>
+// handle data and save to database <br>
                     </code>
                     </pre>
-                   
-                    - giá trị trả về của hàm <code>response.value()</code> đều là <code>string</code>
+
+                - giá trị trả về của hàm <code>response.value()</code> đều là <code>string</code>
                 </p>
 
                 <h3>Cung cấp API mở</h3>
@@ -94,28 +96,28 @@
                 <h4>Yêu cầu</h4>
                 <p>
                     - Nếu từ browser nhập <code>ADDR/api</code> (vd như localhost:8080/api)
-                thì server sẽ trả về 1 JSON
+                    thì server sẽ trả về 1 JSON
 
                 <pre>
-                    <code class="language-css" >
-                    [ <br>
-                        {
-                            "id": "0",
-                            "esp-id": "0",
-                            "vol": "5",
-                            "time": "12345"
-                        }, <br>
-                        {
-                            "id": "0",
-                            "esp-id": "0",
-                            "vol": "5",
-                            "time": "67890"
-                        }, <br>
-                        ... <br>
-                    ]
+                <code class="language-css" >
+[
+    {
+        "id": "0",
+        "esp-id": "0",
+        "vol": "5",
+        "time": "12345"
+    }, 
+    {
+        "id": "0",
+        "esp-id": "0",
+        "vol": "5",
+        "time": "67890"
+    }, 
+    ... 
+]
                     </code>
                 </pre>
-                
+
 
                 <br> - Với <code>Content-Type  </code> ở header là <code>application/json</code>
 
