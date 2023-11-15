@@ -98,12 +98,12 @@
                     - Ở phần controller, lấy giá trị các tham số của request
 
                 <pre>
-<code class="language-css" >std::string espId = response.value("esp-id"), 
-    vol = response.value("vol"), 
-    time = response.value("time"); 
+<code class="language-css" >std::string espId = request.value("esp-id"), 
+    vol = request.value("vol"), 
+    time = request.value("time"); 
 // handle data and save to database</code>
                 </pre>
-                - giá trị trả về của hàm <code>response.value()</code>
+                - giá trị trả về của hàm <code>request.value()</code>
                 đều là <code>string</code>
                 </p>
 
