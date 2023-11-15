@@ -91,14 +91,11 @@
                     - Ở phần controller, lấy giá trị các tham số của request
 
                 <pre>
-                <code class="language-css" >
-std::string espId = response.value("esp-id"), <br>
-    vol = response.value("vol"), <br>
-    time = response.value("time"); <br>
-// handle data and save to database <br>
-                </code>
+<code class="language-css" >std::string espId = response.value("esp-id"), 
+    vol = response.value("vol"), 
+    time = response.value("time"); 
+// handle data and save to database</code>
                 </pre>
-
                 - giá trị trả về của hàm <code>response.value()</code>
                 đều là <code>string</code>
                 </p>
@@ -113,8 +110,8 @@ std::string espId = response.value("esp-id"), <br>
                     thì server sẽ trả về 1 JSON
 
                 <pre>
-                <code class="language-css" >
-[
+                
+<code class="language-css" >[
     {
         "id": "0",
         "esp-id": "0",
@@ -128,8 +125,7 @@ std::string espId = response.value("esp-id"), <br>
         "time": "67890"
     }, 
     ... 
-]
-                    </code>
+]</code>
                 </pre>
 
                 <br> - Với <code>Content-Type </code> ở header là <code>application/json</code>
