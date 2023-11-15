@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Document</title>
-
-    <link rel="stylesheet" href="prism/prism.css">
-
+    <title>Document</title>    
     <style>
         body {
             margin: 0;
@@ -22,6 +19,10 @@
             text-align: center;
         }
 
+        code {
+            background-color: #dfd9d9;
+            padding: 0 3px 0;
+        }
 
         .content {
             padding: 0 20% 0;
@@ -38,6 +39,8 @@
             font-family: Consolas, "Helvetica Neue", Helvetica, sans-serif;
         }
     </style>
+
+<link rel="stylesheet" href="prism/prism.css">
 </head>
 
 <body>
@@ -79,7 +82,8 @@
                 <h3>Nhận dữ liệu từ ESP32 client</h3>
                 <p>
                     - Ở phần controller, lấy giá trị các tham số của request
-                <pre>
+                
+                    <pre>
                 <code class="language-css" >
 std::string espId = response.value("esp-id"), <br>
     vol = response.value("vol"), <br>
