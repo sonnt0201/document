@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
+
+    <link rel="stylesheet" href="prism/prism.css">
+
     <style>
         body {
             margin: 0;
@@ -17,12 +21,7 @@
         h1 {
            text-align: center; 
         }
-        code {
-            background-color: #dbd5d5;
-            margin: 0.2rem;
-            padding: 0 3px 0;
-            border-radius: 0.1rem;
-        }
+       
 
         .content {
             padding: 0 20% 0;
@@ -78,12 +77,15 @@
                 <h3>Nhận dữ liệu từ ESP32 client</h3>
                 <p>
                     - Ở phần controller, lấy giá trị các tham số của request
-                    <div class="code" >
+                    <pre>
+                         <code class="language-css" >
                         std::string espId = response.value("esp-id"), <br>
                                     vol = response.value("vol"), <br>
                                     time = response.value("time"); <br>
                         // handle data and save to database <br>
-                    </div>
+                    </code>
+                    </pre>
+                   
                     - giá trị trả về của hàm <code>response.value()</code> đều là <code>string</code>
                 </p>
 
@@ -94,7 +96,8 @@
                     - Nếu từ browser nhập <code>ADDR/api</code> (vd như localhost:8080/api)
                 thì server sẽ trả về 1 JSON
 
-                <div class="code" >
+                <pre>
+                    <code class="language-css" >
                     [ <br>
                         {
                             "id": "0",
@@ -110,7 +113,9 @@
                         }, <br>
                         ... <br>
                     ]
-                    </div>
+                    </code>
+                </pre>
+                
 
                 <br> - Với <code>Content-Type  </code> ở header là <code>application/json</code>
 
@@ -119,6 +124,8 @@
 
         </div>
     </span>
+
+    <script src="prism/prism.js"></script>
 </body>
 
 </html>
