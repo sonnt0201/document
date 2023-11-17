@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="../default.css" />
+
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+  </head>
+
+  <body>
+    <span>
+      <div class="index"></div>
+      <div class="content">
+        <h1>Hướng dẫn nhanh cài CMake (Window) </h1>
+        <div>
+          <h2>I. Môi trường CMake</h2>
+          <p>
+            <a href="https://cmake.org/download/">https://cmake.org/download/</a>
+            <br> Chọn tải bằng .msi 
+            <br><img width="60%" src="i1.png" alt="tải">
+            <br> Sau đó cài đặt như thường.
+            
+          </p>
+        </div>
+
+        <div>
+            <h2>II. CMake extension cho VSCode</h2>
+            <br><img src="ii1.png" alt="extension">
+
+        </div>
+
+        <div>
+            <h2>III. Chạy</h2>
+            - Mở server project trong VSCode và mở terminal ( <code>Crt + ~</code> )
+            <br>- Chuyển hướng tới thư mục build
+            <br><pre><code class="language-css">cd build</code></pre>
+            <br>- Biên dịch và chạy:
+            <br><pre><code class="language-css">mingw32-make run</code></pre>
+            <br>Có thể sửa code tùy ý rồi chạy <code>mingw32-make run</code>
+            <br>Lưu ý, các lệnh <code>mingw32-make</code> phải được chạy trong thư mục build
+            <br>Hướng dẫn về cấu trúc project ở trong file pdf.
+        </div>
+      </div>
+    </span>
+
+    <script src="../prism/prism.js"></script>
+  </body>
+</html>
