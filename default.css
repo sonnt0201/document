@@ -31,6 +31,13 @@ code {
     font-family: Consolas, "Helvetica Neue", Helvetica, sans-serif;
 }
 
+.footer {
+    text-align: center;
+    font-family: Consolas, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bolder;
+    margin: 1rem auto 1rem;
+}
+
 @media screen and (max-width: 600px) {
     .content {
     padding:0 ;
