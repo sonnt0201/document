@@ -59,7 +59,7 @@
     };</code></pre>
             <p>Trên đây là phần code trong <CODe>file .hpp</CODe> khai báo tên class và các method
             <br><B>Dũng và Mừng</B> sẽ hoàn thiện phần code trong file <code>PIRDB.cpp</code>, các hàm cần viết là các hàm sau: </p>
-
+            <b style="color: red;"><i>Hiểu đơn giản, mọi người sẽ thêm code vào tất cả những chỗ có chữ <code>/* Code goes here */ </code></i></b>
 <pre><code class="language-css">
 /* TO-DO: Implement method recordWithID() */ 
 RecordRow PIRDB::recordWithID(int ID) {
@@ -99,10 +99,12 @@ std::vector<int> RecordRow::voltage(){
                     <br>- Đầu ra là 1 đối tượng thuộc <code>class PIRDB</code> có các thuộc tính <code>espID, voltage, time </code>tương ứng với ID.
                     <br>- Thân hàm: lấy dữ liệu từ database sử dụng lệnh <code>select</code> và đối tượng <code>this->db</code>, xử lý dữ liệu lấy ra,
                     chuyển dữ liệu lấy ra thành dạng 1 đối tượng <code>RecordRow</code>  và <code>return</code> đối tượng mới này.
-                    <br><br><b>*Gợi ý:</b> quy trình lấy dữ liệu từ database giống ý hệt quy trình trong hàm <code>PIRDB::getDataWithID(int ID)</code>,
+                    
+                    <br><br><b>*Gợi ý:</b>- quy trình lấy dữ liệu từ database giống ý hệt quy trình trong hàm <code>PIRDB::getDataWithID(int ID)</code>,
                     chỉ khác ở điểm hàm <code>PIRDB::getDataWithID(int ID)</code> trả về một <code>vector</code> với 3 phần tử,
                     còn hàm <code>PIRDB::recordWithID(int ID)</code> trả về 1 đối tượng thuộc <code>class RecordRow</code>
-
+                    <br><i>- Tham khảo những hàm phía trên để code hàm phía dưới</i>
+                    <br><i>- Không viết thêm bất cứ function ngoài nào, chỉ điền vào những func đã có</i>
                 </p>
 
             </div>
