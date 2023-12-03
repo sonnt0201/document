@@ -38,6 +38,13 @@ code {
     margin: 1rem auto 1rem;
 }
 
+.footer hr {
+    border-top: 4px dotted #bbb;
+    margin: 0 20% 0.5rem;
+    border-bottom: none;
+  /* border-radius: 5px; */
+}
+
 @media screen and (max-width: 600px) {
     .content {
     padding:0 ;
