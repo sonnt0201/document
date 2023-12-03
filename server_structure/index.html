@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="../default.css" />
+
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+  </head>
+
+  <body>
+    <span>
+      <div class="index"></div>
+      <div class="content">
+        <h1>Cấu trúc PIR Server</h1>
+
+       <div class="part">
+        <h2>I. Tổng quan</h2>
+
+        <div class="diagram">
+          <div class="header">
+            Models
+          </div>
+          <div class="body">
+            - class PIRDB
+            <br> - class Request
+            <br> - class Response
+
+          </div>
+
+          <div class="footer">
+            Chứa các đối tượng lưu giữ, quản lý, xử lý dữ liệu. 
+          </div>
+        </div>
+       
+        <div class="diagram">
+          <div class="header">
+            Controllers
+          </div>
+          <div class="body">
+            - class Controller
+            <br> - class Server
+          </div>
+          <div class="footer">
+            Tạo kết nối với client, xử lý request, tạo và trả về response
+          </div>
+        </div>
+
+        <div class="diagram">
+          <div class="header">
+           Web View
+          </div>
+          <div class="body">
+            index.html
+            
+          </div>
+          <div class="footer">
+            Giao diện đơn giản để hiển thị dữ liệu
+          </div>
+        </div>
+
+       </div>
+
+       <div class="part">
+        <h2>II. Models</h2>
+        Chức năng của các phương thức và thuộc tính được định nghĩa ở trong <code>models/*.hpp</code>
+        <br>- <code>class Request</code>- khởi tạo với tham số là string request nhận từ client, trả về thuộc tính là các giá trị được gửi kèm với request. 
+        <br><pre>
+<code class="language-css">#include ...
+#define ...
+/* HTTP Request class - contains read-only attributes and methods */ 
+class Request {
+    private:                 
+        std::string rawText; /* raw text of the request in std::string type */                  
+    public:             
+    Request(char request[8000]);  /* Initializer with char* request received from client */          
+             
+    int method(); /* METHOD of HTTP Request (GET - POST - PUT - DELETE)*/          
+              
+    std::string path(); /*Path of the Request*/         
+              
+    std::vector<std::string> params () ; /*List of the parameters in the request*/          
+              
+    std::string value(std::string param); /*Get the value of a parameter in the request*/        
+              
+    std::string body(); /*Body content of the request*/
+        
+    std::string getText() ; /* return origin request in raw text*/
+};</code></pre>
+
+        - Response
+
+       </div>
+
+      </div>
+    </span>
+
+    <script src="../prism/prism.js"></script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="../default.css" />
+
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+  </head>
+
+  <body>
+    <span>
+      <div class="index"></div>
+      <div class="content">
+        <h1>Yêu cầu về server</h1>
+        <div>
+            <h2>Tổng quan</h2>
+            <p>
+                <h3>Vấn đề 1: getDataWithID()</h3>
+                <p>
+                    Trong phần <code>models/PIRDB.* </code> là <code> class PIRDB</code> cần 1 hàm để trả về dữ liệu 1 dòng 
+                    với đầu vào là ID của dòng đó.
+                    
+                </p>
+                <h3>Vấn đề 2: về tốc độ xử lý GET Request</h3>
+                Khi dữ liệu bắt đầu lớn ( từ 3000 rows trở đi ), việc ghi thêm row không bị giảm tốc độ nhưng việc lấy api từ GET Request bị chậm
+                <br><img src="abstract1.png" alt="log file">
+                <br> <b>1. Triển khai đa luồng với server</b>
+                <br><b>2. Cần 1 log file để thống kê lại tất cả các thời gian xử lý các request</b>
+            </p>
+        </div>
+        <div>
+            <h2>Đối với Dũng và Mừng</h2>
+            <div class="task1">
+                <h3>Task 1: Triển khai <code>class RecordRow</code> và hàm <code>PIRDB::recordWithID(int ID)</code> </h3>
+                <h4>Triển khai <code>class RecordRow</code></h4>
+                <code>models.hpp</code>
+                <br><pre>
+<code class="language-css">/* TO-DO: Implement Request Row class */ 
+    class RecordRow {
+        private:
+        int _id, _espID, _timestamp, _voltage[VOLNUM];
+        public:
+    
+        /* Init function */ 
+        RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM]);
+    
+        /* Note: id, espID, timestamp, voltage is initialized only in init function (above), after initialized, they are READONLY */     int id();
+        int espID();
+        int timestamp();
+        std::vector <int> voltage();
+    };</code></pre>
+            <p>Trên đây là phần code trong <CODe>file .hpp</CODe> khai báo tên class và các method
+            <br><B>Dũng và Mừng</B> sẽ hoàn thiện phần code trong file <code>PIRDB.cpp</code>, các hàm cần viết là các hàm sau: </p>
+
+<pre><code class="language-css">
+/* TO-DO: Implement method recordWithID() */ 
+RecordRow PIRDB::recordWithID(int ID) {
+    /* Code goes here */
+};
+/* TO-DO: Implement class RecordRow */ 
+RecordRow::RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM]){
+    /* Code goes here */
+};
+
+int RecordRow::id(){
+    /* Code goes here */
+    return this->_id;
+};
+int RecordRow::espID(){
+    /* Code goes here */
+};
+int RecordRow::timestamp(){
+    /* Code goes here */
+};
+std::vector<int> RecordRow::voltage(){
+    /* Code goes here */
+};
+
+</code></pre> 
+                <p>
+                    * <code> class RecordRow</code> đặc trưng cho dữ liệu của 1 hàng trong DB. Mọi người sẽ implement
+                    class này trước. 
+                    <br>- class RecordRow có hàm khởi tạo <code>RecordRow::RecordRow(int id, int espID, int timestamp, int voltage[VOLNUM])</code> 
+                    <br>- Với 4 tham số đầu vào: 
+                    là <code> id, espID, timestamp,voltage[VOLNUM] </code>, khi gọi hàm khởi tạo, 4 giá trị của tham số truyền vào sẽ được gán cho 4 biến private.
+                    <br>- các hàm <code>public: id(), espID(), timestamp(), voltage()  </code> chỉ để trả về giá trị 4 biến private trên 
+
+                    <br><br>* Sau đó, mọi người sẽ triển khai hàm <code>RecordRow PIRDB::recordWithID(int ID)</code> 
+                    <br>- Hàm này là 1 method của <code>class PIRDB</code>, lấy dữ liệu từ 1 dòng của Database, trả về một đối tượng (object) thuộc <code>class RecordRow</code>
+                    <br>- Tham số đầu vào: <code>int ID</code> là ID của dòng dữ liệu cần lấy
+                    <br>- Đầu ra là 1 đối tượng thuộc <code>class PIRDB</code> có các thuộc tính <code>espID, voltage, time </code>tương ứng với ID.
+                    <br>- Thân hàm: lấy dữ liệu từ database sử dụng lệnh <code>select</code> và đối tượng <code>this->db</code>, xử lý dữ liệu lấy ra,
+                    chuyển dữ liệu lấy ra thành dạng 1 đối tượng <code>RecordRow</code>  và <code>return</code> đối tượng mới này.
+                    <br><br><b>*Gợi ý:</b> quy trình lấy dữ liệu từ database giống ý hệt quy trình trong hàm <code>PIRDB::getDataWithID(int ID)</code>,
+                    chỉ khác ở điểm hàm <code>PIRDB::getDataWithID(int ID)</code> trả về một <code>vector</code> với 3 phần tử,
+                    còn hàm <code>PIRDB::recordWithID(int ID)</code> trả về 1 đối tượng thuộc <code>class RecordRow</code>
+
+                </p>
+
+            </div>
+
+            <div class="task2">
+                <h3>Task 2: `Bổ sung sau ...`</h3>
+            </div>
+        </div>
+        
+        
+      </div>
+    </span>
+
+    <script src="../prism/prism.js"></script>
+  </body>
+</html>
