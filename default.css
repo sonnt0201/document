@@ -9,7 +9,12 @@ body {
 h1 {
     text-align: center;
 }
-
+h2 {
+    color: #645CBB;
+}
+h3 {
+    color: #4f7527;
+}
 code {
     background-color: #dfd9d9;
     padding: 0 3px 0;
