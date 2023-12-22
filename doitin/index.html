@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Đội Tin cô Thư</title>
+    <link rel="stylesheet" href="../default.css" />
+
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <style>
+      h1 {
+        color: #61764B;
+      }
+        img {
+            width: 100%;
+        }
+    </style>
+  </head>
+
+  <body>
+    <span>
+      <div class="index"></div>
+      <div class="content">
+        <h1>Một vài khái niệm của C++</h1>
+        
+        
+        <div class="abstract">
+          <h2>Tổng quan</h2>
+          <p>
+            Bài này nói về <code>set</code> và <code>map</code> trong <code>c++</code>, ngăn xếp và hàng đợi 
+
+          </p>
+        </div>
+        <h2>Chi tiết</h2>
+        <div class="task1">
+          <h3>C++ <code>set</code> collection</h3>
+            <h4>Set là gì ? </h4>
+            <p>
+                - <code>set</code> nó cũng dùng để chứa 1 chuỗi các giá trị giống array trong c++ 
+                <br>- chỉ khác cái <code>set</code> là tập hợp. 
+                Đặc điểm của tập hợp là mỗi phần tử chỉ xuất hiện một lần duy nhất (giống y khái niệm "tập hợp" trong toán).
+                <br>- Dù cô có thêm 1 giá trị vào set nhiều lần, thì khi in các phần tử trong set cô cũng chỉ thấy nó xuất hiện 1 lần thôi.
+                <br>- Trong set, các phần tử theo mặc định cũng được xếp theo tăng dần, dù cô thêm các giá trị theo thứ tự là trước hay sau.
+                <br>- Dĩ nhiên cũng có thể cài đặt nó để xếp theo giá trị giảm dần.
+            </p>
+
+            <h4>Thao tác với <code>set</code></h4>
+            <p>
+                - một <code>set </code> gồm các phần tử với 1 kiểu giá trị duy nhất
+                
+                <br>- Thêm thư viện <code>set</code>:
+                <pre><code class="language-css">#include  &lt;set&gt;  </code></pre>
+                Lưu ý khai báo <code>using namespace std;</code>
+
+                <br>- Tạo một <code>set </code> chứa các giá trị với kiểu nhất định :
+                <br><pre><code class="language-css">std::set &lt; int&gt;  taphop</code></pre>
+                <br>- Tập hợp trên rỗng.
+                <br>- Thêm các phần tử vào tập hợp thì dùng <code>insert()</code>
+
+                <pre><code class="language-css">taphop.insert(10); 
+taphop.insert(1);
+taphop.insert(7);
+taphop.insert(2);
+taphop.insert(1);</code></pre>
+                
+                    <br>- Dù thứ tự thêm như nào, thứ tự các phần tử vẫn được xếp theo bé đến lớn,
+                    hãy thử in ra các phần tử trong tập hợp:
+
+                    <pre><code class="language-css">for (auto &phantu : taphop) { /* Lưu ý đây là lấy kiểu tham trị */ 
+    cout &lt;&lt; phantu &lt;&lt; endl;
+} </code></pre>
+
+                <br>- Đầu ra sẽ hiển thị : <code>1 2 7 10</code>, và dĩ nhiên, dù <code>1</code> được insert tận 2 lần, nó vẫn chỉ xuất hiện 1 lần trong tập hợp mà thôi. 
+                
+                <br>- Xóa 1 giá trị khỏi tập hợp:
+                <pre><code class="language-css">taphop.erase(10);</code></pre>
+                <br>- Lấy số phần tử: 
+                <pre><code class="language-css">taphop.size()</code></pre>
+                <br>- Kiểm tra xem đó có phải tập rỗng
+                <pre><code class="language-css">taphop.empty() /* return true or false */</code></pre>
+                <br>- Kiểm tra 1 phần tử có hay không:
+                <pre><code class="language-css">taphop.empty() /* return true or false */</code></pre>
+                <br>Kết hợp lại: 
+                <pre><code class="language-css">#include &lt;iostream&gt; 
+#include &lt;set&gt;
+using namespace std;
+int main() {
+    set &lt;int&gt;  taphop;
+    taphop.insert(10);
+    taphop.insert(1);
+    taphop.insert(7);
+    taphop.insert(2);
+    taphop.insert(1);
+    taphop.erase(10);
+                        
+    cout << "phan tu: " << endl;
+    for (auto &phantu : taphop) {
+    cout << phantu << endl;
+    }                
+    cout << "so phan tu: " << taphop.size() << endl;                   
+    cout << "kiem tra tap rong: " << taphop.empty() << endl;
+    cout << "kiem tra co phan tu co gia tri 10: " << taphop.count(10);
+}
+                </code></pre>
+
+            </p>
+
+           
+
+        </div>
+
+        <hr>
+        <div class="task2">
+          <h3>C++ <code>map</code> collection</h3>
+
+          <h4>Khái niệm</h4>
+          <p> 
+           - <code>map</code> gồm các phần tử ở dạng <code><i>"key" - "value"</i></code>, nghĩa là 1 cặp gồm tên - giá trị. 
+           <br>- Giống kiểu trong phù hiệu có Tên: Nguyễn Thái Sơn, Lớp: 12A1, Năm học: 2020-2021, thì 
+           <code>Tên, Lớp, Năm học</code> là các <code>"key"</code> và <code>Nguyễn Thái Sơn, 12A1, 2020-2021</code>
+           lần lượt và <code>value</code> tương ứng
+          </p>
+        
+        </div>
+       
+        <div class="task3">
+          <h3></h3>
+         
+        </div>
+        
+      </div>
+    </span>
+
+    <div class="footer">
+        <hr>
+        🧑‍💻🧑‍💻🧑‍💻 Happy coding !!! 🧑‍💻🧑‍💻🧑‍💻
+    </div>
+    <script src="../prism/prism.js"></script>
+  </body>
+</html>
